@@ -1,10 +1,11 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
+
+import com.jpmc.theater.Service.LocalDateProvider;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Theater {
 

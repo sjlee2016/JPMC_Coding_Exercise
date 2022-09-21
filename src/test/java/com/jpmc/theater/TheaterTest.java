@@ -1,17 +1,12 @@
 package com.jpmc.theater;
 
+import com.jpmc.theater.Object.Theater;
+import com.jpmc.theater.Service.LocalDateProvider;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TheaterTest {
-    @Test
-    void testTotalFeeForCustomer() {
-        Theater theater = new Theater(LocalDateProvider.singleton());
-        Customer john = new Customer("John Doe", "id-12345");
-        Reservation reservation = theater.reserve(john, 2, 4);
-        assertEquals(reservation.totalFee(), 50);
-    }
 
     @Test
     void testPrintMovieSchedule() {

@@ -1,4 +1,5 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
+import com.jpmc.theater.Utilities.TicketPriceUtils;
 
 public class Reservation {
     private Customer customer;
@@ -11,7 +12,8 @@ public class Reservation {
         this.audienceCount = audienceCount;
     }
 
-    public double totalFee() {
-        return showing.getMovieFee() * audienceCount;
+    public double getTotalFee(){
+        return TicketPriceUtils.calculateTotalFee(showing, audienceCount);
     }
+
 }

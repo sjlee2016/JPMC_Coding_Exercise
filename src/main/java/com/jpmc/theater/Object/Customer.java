@@ -1,4 +1,4 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
 
 import java.util.Objects;
 

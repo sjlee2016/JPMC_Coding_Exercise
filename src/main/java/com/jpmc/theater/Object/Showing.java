@@ -1,8 +1,9 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
+
+import com.jpmc.theater.Object.Movie;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Math.max;

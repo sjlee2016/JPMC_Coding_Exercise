@@ -1,4 +1,4 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
 
 import java.time.Duration;
 import java.util.Objects;
@@ -48,6 +48,7 @@ public class Movie {
     public String toString(){
         return title + " " + "(" + runningTime + ")";
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(title, description, runningTime, ticketPrice, specialCode);

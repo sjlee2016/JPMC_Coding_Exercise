@@ -1,5 +1,9 @@
 package com.jpmc.theater;
 
+import com.jpmc.theater.Object.Customer;
+import com.jpmc.theater.Object.Movie;
+import com.jpmc.theater.Object.Reservation;
+import com.jpmc.theater.Object.Showing;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -17,6 +21,6 @@ public class ReservationTest {
                 1,
                 LocalDateTime.now()
         );
-        assertTrue(new Reservation(customer, showing, 3).totalFee() == 37.5);
+        assertTrue(new Reservation(customer, showing, 3).getTotalFee() == 37.5);
     }
 }
