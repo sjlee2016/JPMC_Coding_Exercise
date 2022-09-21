@@ -41,34 +41,17 @@ public class Theater {
         return new Reservation(customer, showing, howManyTickets);
     }
 
-    public void printSchedule() {
-        System.out.println(provider.currentDate());
-        System.out.println("===================================================");
-        schedule.forEach(s ->
-                System.out.println(s.getSequenceOfTheDay() + ": " + s.getStartTime() + " " + s.getMovie().getTitle() + " " + humanReadableFormat(s.getMovie().getRunningTime()) + " $" + s.getMovieFee())
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(provider.currentDate() + "\n===================================================\n");
+        schedule.forEach(s ->str.append(s +"\n")
         );
-        System.out.println("===================================================");
-    }
-
-    public String humanReadableFormat(Duration duration) {
-        long hour = duration.toHours();
-        long remainingMin = duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours());
-
-        return String.format("(%s hour%s %s minute%s)", hour, handlePlural(hour), remainingMin, handlePlural(remainingMin));
-    }
-
-    // (s) postfix should be added to handle plural correctly
-    private String handlePlural(long value) {
-        if (value == 1) {
-            return "";
-        }
-        else {
-            return "s";
-        }
+        str.append("===================================================\n");
+        return str.toString();
     }
 
     public static void main(String[] args) {
         Theater theater = new Theater(LocalDateProvider.singleton());
-        theater.printSchedule();
+        System.out.println(theater);
     }
 }

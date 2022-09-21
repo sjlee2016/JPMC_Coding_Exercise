@@ -44,7 +44,10 @@ public class Movie {
                 && Objects.equals(runningTime, movie.runningTime)
                 && Objects.equals(specialCode, movie.specialCode);
     }
-
+    @Override
+    public String toString(){
+        return title + " " + "(" + runningTime + ")";
+    }
     @Override
     public int hashCode() {
         return Objects.hash(title, description, runningTime, ticketPrice, specialCode);
