@@ -41,7 +41,9 @@ public class Showing {
     }
 
     private boolean isBetweenHours(LocalTime start, LocalTime end){
-        LocalTime currentTime = getStartTime().now().toLocalTime();
+        LocalTime currentTime = getStartTime().toLocalTime();
+        System.out.println(currentTime);
+        System.out.println(currentTime.getHour());
         return currentTime.isAfter(start) && currentTime.isBefore(end);
     }
 
@@ -84,6 +86,7 @@ public class Showing {
     public double calculateFee(int audienceCount) {
         double originalPrice = movie.getTicketPrice();
         double discount  = max(this.getSequenceDiscount() ,max(this.getSpecialDiscount(), this.getTimeDiscount()));
+
         return (originalPrice - discount) * audienceCount;
     }
 }
