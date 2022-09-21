@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TheaterTests {
+public class TheaterTest {
     @Test
     void totalFeeForCustomer() {
         Theater theater = new Theater(LocalDateProvider.singleton());

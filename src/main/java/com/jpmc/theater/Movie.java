@@ -31,6 +31,8 @@ public class Movie {
     }
 
     public int getSpecialCode() { return specialCode;}
+
+    public String getDescription() { return description;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
