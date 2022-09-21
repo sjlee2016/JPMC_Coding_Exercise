@@ -26,40 +26,27 @@ public class TicketPriceManager {
     }
 
     private double getSequenceDiscount() {
-        double sequenceDiscount = 0;
         switch (showing.getSequenceOfTheDay()) {
-            case 1:
-                sequenceDiscount = 3;
-                break;
-            case 2:
-                sequenceDiscount = 2;
-                break;
+            case 1: return 3;
+            case 2: return 2;
             case 7:
-                sequenceDiscount = 1;
-                break;
-            default:
-                sequenceDiscount = 0;
-                break;
+                return 1;
         }
-        return sequenceDiscount;
+        return 0;
     }
 
     private double getSpecialDiscount(){
-        double specialDiscount = 0;
-        double originalPrice = movie.getTicketPrice();
         if(MOVIE_CODE_SPECIAL == movie.getSpecialCode()){
-            specialDiscount = originalPrice * SPECIAL_DISCOUNT;
+            return movie.getTicketPrice() * SPECIAL_DISCOUNT;
         }
-        return specialDiscount;
+        return 0;
     }
 
     private double getTimeDiscount(){
-        double timeDiscount = 0;
-        double originalPrice = movie.getTicketPrice();
         if(isBetweenHours(LocalTime.of(11,0), LocalTime.of(16,0))){
-            timeDiscount = originalPrice * TIME_DISCOUNT;
+            return movie.getTicketPrice() * TIME_DISCOUNT;
         }
-        return timeDiscount;
+        return 0;
     }
     public double calculateTotalFee() {
         double originalPrice = movie.getTicketPrice();
