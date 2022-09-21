@@ -1,4 +1,4 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Utilities;
 
 import com.jpmc.theater.Object.Customer;
 import com.jpmc.theater.Object.Movie;

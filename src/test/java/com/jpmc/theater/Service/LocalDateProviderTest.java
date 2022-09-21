@@ -1,4 +1,4 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Service;
 
 import com.jpmc.theater.Service.LocalDateProvider;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.jpmc.theater;
+package com.jpmc.theater.Object;
 
 import com.jpmc.theater.Object.Theater;
 import com.jpmc.theater.Service.LocalDateProvider;
