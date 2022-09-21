@@ -5,7 +5,9 @@ import com.jpmc.theater.Object.Showing;
 import java.time.LocalTime;
 
 import static java.lang.Math.max;
-
+/**
+ * Utility used to calculate ticket price of the movie
+ */
 public class TicketPriceUtils {
     private static int MOVIE_CODE_SPECIAL = 1;
     private static double SPECIAL_DISCOUNT = 0.2;
@@ -40,10 +42,10 @@ public class TicketPriceUtils {
         }
         return 0;
     }
-    public static double calculateTotalFee(Showing showing, int numOfTickets) {
+    public static double calculateTotalFee(Showing showing, int audienceCount) {
         double originalPrice = showing.getMovie().getTicketPrice();
         double discount  = max(getSequenceDiscount(showing) ,max(getSpecialDiscount(showing), getTimeDiscount(showing)));
-        return (originalPrice - discount) * numOfTickets;
+        return (originalPrice - discount) * audienceCount;
     }
 
 }

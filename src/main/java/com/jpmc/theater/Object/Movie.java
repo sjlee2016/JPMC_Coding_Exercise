@@ -1,5 +1,7 @@
 package com.jpmc.theater.Object;
 
+import org.json.JSONObject;
+
 import java.time.Duration;
 import java.util.Objects;
 
@@ -16,7 +18,17 @@ public class Movie {
         this.runningTime = runningTime;
         this.ticketPrice = ticketPrice;
         this.specialCode = specialCode;
+        this.description = "";
     }
+
+    public Movie(String title, Duration runningTime, double ticketPrice, int specialCode, String description) {
+        this.title = title;
+        this.runningTime = runningTime;
+        this.ticketPrice = ticketPrice;
+        this.specialCode = specialCode;
+        this.description = description;
+    }
+
 
     public String getTitle() {
         return title;
@@ -49,6 +61,15 @@ public class Movie {
         return title + " " + "(" + runningTime + ")";
     }
 
+    public JSONObject toJSONObject(){
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("description", description);
+        json.put("running_time", runningTime);
+        json.put("ticket_price", ticketPrice);
+        json.put("special_code", specialCode);
+        return json;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(title, description, runningTime, ticketPrice, specialCode);

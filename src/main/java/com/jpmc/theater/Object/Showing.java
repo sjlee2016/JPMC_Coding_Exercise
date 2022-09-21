@@ -1,6 +1,7 @@
 package com.jpmc.theater.Object;
 
 import com.jpmc.theater.Object.Movie;
+import org.json.JSONObject;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -49,7 +50,7 @@ public class Showing {
 
     // (s) postfix should be added to handle plural correctly
     private String handlePlural(long value) {
-        if (value == 1) {
+        if (value <= 1 ) {
             return "";
         }
         else {
@@ -58,5 +59,13 @@ public class Showing {
     }
     public String toString(){
         return getSequenceOfTheDay() + ": " + getStartTime() + " " + getMovie().getTitle() + " " + humanReadableFormat(getMovie().getRunningTime()) + " $" + getMovieFee();
+    }
+
+    public JSONObject toJSONObject(){
+        JSONObject json = new JSONObject();
+        json.put("sequence_of_the_day", getSequenceOfTheDay());
+        json.put("show_start_time", getStartTime());
+        json.put("movie", movie.toJSONObject());
+        return json;
     }
 }
