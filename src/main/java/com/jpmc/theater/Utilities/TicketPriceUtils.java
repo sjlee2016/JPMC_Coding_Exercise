@@ -9,7 +9,7 @@ import static java.lang.Math.max;
  * Utility used to calculate ticket price of the movie
  */
 public class TicketPriceUtils {
-    private static int MOVIE_CODE_SPECIAL = 1;
+    private static int SPECIAL_MOVIE_CODE = 1;
     private static double SPECIAL_DISCOUNT = 0.2;
     private static double TIME_DISCOUNT = 0.25;
 
@@ -30,7 +30,7 @@ public class TicketPriceUtils {
     }
 
     private static double getSpecialDiscount(Showing showing){
-        if(MOVIE_CODE_SPECIAL == showing.getMovie().getSpecialCode()){
+        if(SPECIAL_MOVIE_CODE == showing.getMovie().getSpecialCode()){
             return showing.getMovie().getTicketPrice() * SPECIAL_DISCOUNT;
         }
         return 0;
