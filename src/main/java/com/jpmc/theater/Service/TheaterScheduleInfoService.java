@@ -12,9 +12,12 @@ public class TheaterScheduleInfoService {
     }
     public String getScheduleDetails(){
             StringBuilder str = new StringBuilder();
+            str.append(theater.getProvider().getCurrentDate());
+            str.append("\n===================================================\n");
             for(Showing s : theater.getSchedule()){
                 str.append(s+"\n");
             }
+            str.append("===================================================\n");
             return str.toString();
     }
 
@@ -27,10 +30,7 @@ public class TheaterScheduleInfoService {
             return json;
     }
     public void printTheaterSchedule(){
-        System.out.println(theater.getProvider().getCurrentDate());
-        System.out.println("===================================================");
         System.out.println(getScheduleDetails());
-        System.out.println("===================================================");
     }
 
 }

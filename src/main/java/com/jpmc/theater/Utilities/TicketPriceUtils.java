@@ -45,7 +45,7 @@ public class TicketPriceUtils {
     public static double calculateTotalFee(Showing showing, int audienceCount) {
         double originalPrice = showing.getMovie().getTicketPrice();
         double discount  = max(getSequenceDiscount(showing) ,max(getSpecialDiscount(showing), getTimeDiscount(showing)));
-        return (originalPrice - discount) * audienceCount;
+        return max(0, (originalPrice - discount) * audienceCount);
     }
 
 }

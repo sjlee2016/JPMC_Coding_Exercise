@@ -4,9 +4,12 @@ import com.jpmc.theater.Object.LocalDateProvider;
 import com.jpmc.theater.Object.Movie;
 import com.jpmc.theater.Object.Showing;
 import com.jpmc.theater.Object.Theater;
-import org.junit.Before;
+import org.apache.tomcat.util.json.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileReader;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,15 +40,28 @@ public class TheaterScheduleInfoServiceTest {
         Theater theater = new Theater(LocalDateProvider.singleton(), schedule);
         theaterScheduleInfoService = new TheaterScheduleInfoService(theater);
     }
+
     @Test
     void testConvertScheduleDetailsToString() {
         setTestData();
         String expected = "2022-09-21\n===================================================\n1: 2022-09-21T09:00 Turning Red (1 hour 25 minutes) $11.0\n2: 2022-09-21T11:00 Spider-Man: No Way Home (1 hour 30 minutes) $12.5\n3: 2022-09-21T12:50 The Batman (1 hour 35 minutes) $9.0\n4: 2022-09-21T14:30 Turning Red (1 hour 25 minutes) $11.0\n5: 2022-09-21T16:10 Spider-Man: No Way Home (1 hour 30 minutes) $12.5\n6: 2022-09-21T17:50 The Batman (1 hour 35 minutes) $9.0\n7: 2022-09-21T19:30 Turning Red (1 hour 25 minutes) $11.0\n8: 2022-09-21T21:10 Spider-Man: No Way Home (1 hour 30 minutes) $12.5\n9: 2022-09-21T23:00 The Batman (1 hour 35 minutes) $9.0\n===================================================\n";
-        assertEquals(expected, theaterScheduleInfoService.getScheduleDetails().toString());
+        assertEquals(expected, theaterScheduleInfoService.getScheduleDetails());
+        System.out.println(theaterScheduleInfoService.getScheduleDetails());
     }
 
     @Test
-    void testToJSON(){
+    void testConvertScheduleDetailToJSON(){
         setTestData();
+        JSONObject json = theaterScheduleInfoService.getScheduleDetailsInJSON();
+        assertEquals(9, json.length());
+        JSONObject json2 = (JSONObject) json.get("0");
+        JSONObject json3 = (JSONObject) json2.get("movie");
+        assertEquals("2022-09-21T09:00", json2.get("show_start_time").toString());
+        assertEquals(11.0, json3.get("ticket_price"));
+        assertEquals("Turning Red", json3.get("title"));
+        assertEquals(0, json3.get("special_code"));
+        assertEquals("PT1H25M", json3.get("running_time").toString());
+        assertEquals("", json3.get("description"));
+        System.out.println(json);
     }
 }
